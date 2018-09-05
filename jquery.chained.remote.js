@@ -126,6 +126,12 @@
                     });
                 }
 
+              /* If we need to add empty value to dropdown. */
+      if (settings.empty) {
+        var option = $("<option />").val(null).append(settings.empty);
+        $(self).prepend(option);
+      }
+
                 /* Loop option again to set selected. IE needed this... */
                 $(self).children().each(function() {
                     if ($(this).val() === selectedKey + "") {
@@ -153,6 +159,7 @@
         bootstrap: null,
         loading: null,
         clear: false,
+        empty: null,
         data: function(json) { return json; }
     };
 
